@@ -1,8 +1,16 @@
 import axios from "axios";
-import { AUTH_NOTICE_KEY, clearAuthSession, getAccessToken } from "./authSession";
+import {
+  AUTH_NOTICE_KEY,
+  clearAuthSession,
+  getAccessToken,
+} from "./authSession";
+
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://127.0.0.1:8000"
+  : "https://service-booking-management-system-production.up.railway.app";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
