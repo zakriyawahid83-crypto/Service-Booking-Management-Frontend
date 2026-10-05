@@ -63,19 +63,19 @@ function Login({ onLogin }: LoginProps) {
     try {
       clearAuthSession();
 
-      const response = await fetch(
-        "http://127.0.0.1:8000/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email.trim(),
-            password,
-          }),
-        }
-      );
+     const response = await fetch(
+  `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email.trim(),
+      password,
+    }),
+  }
+);
 
       const data = await response.json();
 
@@ -173,22 +173,21 @@ function Login({ onLogin }: LoginProps) {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "http://127.0.0.1:8000/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: name.trim(),
-            email: email.trim(),
-            password,
-            role,
-          }),
-        }
-      );
-
+  const response = await fetch(
+    `${import.meta.env.VITE_API_BASE_URL}/auth/register`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name.trim(),
+        email: email.trim(),
+        password,
+        role,
+      }),
+    }
+  );
       const data = await response.json();
 
       if (!response.ok) {
@@ -239,18 +238,18 @@ function Login({ onLogin }: LoginProps) {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "http://127.0.0.1:8000/auth/forgot-password",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: resetEmail.trim(),
-          }),
-        }
-      );
+  const response = await fetch(
+    `${import.meta.env.VITE_API_BASE_URL}/auth/forgot-password`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: resetEmail.trim(),
+      }),
+    }
+  );
 
       const data = await response.json();
 
