@@ -238,18 +238,19 @@ function Login({ onLogin }: LoginProps) {
     setLoading(true);
 
     try {
-  const response = await fetch(
-    `${import.meta.env.VITE_API_BASE_URL}/auth/forgot-password`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: resetEmail.trim(),
-      }),
-    }
-  );
+const response = await fetch(
+  `${import.meta.env.VITE_API_BASE_URL}/auth/forgot-password`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: resetEmail.trim(),
+    }),
+  }
+);
+
 
       const data = await response.json();
 
